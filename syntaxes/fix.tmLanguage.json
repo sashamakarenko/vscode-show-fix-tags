@@ -1,0 +1,36 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "fix",
+	"patterns": [
+
+		{
+			"match": "\\b(8=FIX.?\\.[0-9]\\.[0-9])(\\x01)",
+			"name": "fix.beginstring",
+			"captures": {
+				"1": { "name": "comment.beginstring" },
+				"2": { "name": "comment.character.fix.soh" }
+			}
+		},
+		{
+			"match": "(10)(=)([^\\x01]*)(\\x01)",
+			"name": "fix.fields",
+			"captures": {
+				"1": { "name": "comment.fix.key" },
+				"2": { "name": "comment.line.double-slash.fix.eq" },
+				"3": { "name": "comment.fix.value" },
+				"4": { "name": "comment.character.fix.soh" }
+			}
+		},
+		{
+			"match": "([0-9]*)(=)([^\\x01]*)(\\x01)",
+			"name": "fix.fields",
+			"captures": {
+				"1": { "name": "constant.numeric.fix.key" },
+				"2": { "name": "comment.line.double-slash.fix.eq" },
+				"3": { "name": "string.unquoted.fix.value" },
+				"4": { "name": "comment.character.fix.soh" }
+			}
+		}
+	],
+	"scopeName": "text.fix"
+}
