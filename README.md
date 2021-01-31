@@ -12,3 +12,24 @@ This is a lightweight FIX syntax support.
 
 ![Enum names](https://github.com/sashamakarenko/vscode-show-fix-tags/raw/master/images/msg-type.png)
 
+
+## Tip
+
+You can modify the SOH character color by adding the following section in your **settings.json** 
+
+```json
+{
+    ...
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": "comment.character.fix.soh",
+                "settings": {
+                    "foreground": "#444444"
+                }
+            }
+        ]
+    },
+    ...
+}
+```

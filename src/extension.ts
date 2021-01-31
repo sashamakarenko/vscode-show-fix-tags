@@ -28,7 +28,7 @@ interface FixFields {
 	fields: FieldMap;
 }
 
-const FIX_FIELDS_BY_VERSION: { [versin:string]: FixFields } = {
+const FIX_FIELDS_BY_VERSION: { [version:string]: FixFields } = {
 	'FIX.4.0' : FIX40_FIELDS,
 	'FIX.4.1' : FIX41_FIELDS,
 	'FIX.4.2' : FIX42_FIELDS,
@@ -95,21 +95,6 @@ function getFixVersion( line: string ) : string {
 
 export function activate(context: vscode.ExtensionContext) {
 
-	/*
-	vscode.languages.registerColorProvider( 'fix', {
-		
-		provideDocumentColors(document: vscode.TextDocument, token: vscode.CancellationToken): vscode.ProviderResult<vscode.ColorInformation[]>{
-			return null;
-		}
-		
-		provideColorPresentations( color: vscode.Color, context: { document: vscode.TextDocument, range: vscode.Range }, token: vscode.CancellationToken): vscode.ProviderResult<vscode.ColorPresentation[]>
-		{
-			return undefined;
-		}
-		
-	} );
-	*/
-
 	vscode.languages.registerHoverProvider( 'fix', { provideHover(document,position,token){
 		let [key,value] = tokenizeField(document,position);
 		if( key && key.length > 0 )
@@ -127,7 +112,7 @@ export function activate(context: vscode.ExtensionContext) {
 				if( field.enums ){
 					enumDesc = (<FixEnums>field.enums)[ value ];
 					if( ! enumDesc ){
-						enumDesc = ' unkown(' + value + ')';
+						enumDesc = ' unknown(' + value + ')';
 					}
 					else {
 						enumDesc = ' ' + enumDesc;
