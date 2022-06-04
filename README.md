@@ -33,3 +33,6 @@ You can modify the SOH character color by adding the following section in your *
     ...
 }
 ```
+
+[![HitCount](https://hits.dwyl.com/sashamakarenko/vscode-show-fix-tags.svg?style=flat)](http://hits.dwyl.com/sashamakarenko/vscode-show-fix-tags)
+
